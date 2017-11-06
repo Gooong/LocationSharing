@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "cn.gooong.android.amap"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a"//, "arm64-v8a", "x86","arm64-v8a","x86_64"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        debug {
+            //keystore中key的别名
+            keyAlias 'key0'
+            //keystore中key的密码
+            keyPassword '12345678'
+            //keystore的文件路径，可以是绝对路径也可以是相对路径
+            storeFile file('/home/gong/.android/12345678.jks')
+            //keystore的密码
+            storePassword '12345678'
+        }
+        release {
+            //keystore中key的别名
+            keyAlias 'key0'
+            //keystore中key的密码
+            keyPassword '12345678'
+            //keystore的文件路径，可以是绝对路径也可以是相对路径
+            storeFile file('/home/gong/.android/12345678.jks')
+            //keystore的密码
+            storePassword '12345678'
+        }
+    }
+    buildToolsVersion '26.0.2'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //3D地图so及jar
+    compile 'com.amap.api:3dmap:5.4.0'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    compile 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:mediarouter-v7:26.1.0'
+}

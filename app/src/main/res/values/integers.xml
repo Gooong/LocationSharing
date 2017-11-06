@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="fetch_all_period_ms">5000</integer>
+    <integer name="fetch_all_delay_ms">1000</integer>
+    <integer name="refresh_btn_rotate_times">3</integer>
+    <integer name="locate_myself_interval_ms">1000</integer>
+    <integer name="max_expire_time_ms">20000</integer>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Positions</string>
+    <string name="net_addr">http://gooong.cn:5040</string>
+    <string name="get_all_route">/all</string>
+    <string name="delete_route">/user/</string>
+    <string name="refresh_route">/user/</string>
+    <string name="exit_program">再按一次退出程序</string>
+    <string name="icon_refresh">&#xe635;</string>
+    <string name="icon_locate">&#xe7cd;</string>
+    <string name="network_error">无法连接至服务器</string>
+    <string name="locate_error">无法定位，请确保GPS和网络畅通</string>
+    <string name="shared_preferences_user_group">user</string>
+    <string name="user_id_key">ID</string>
+
+</resources>
