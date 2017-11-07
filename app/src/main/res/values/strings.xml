@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Positions</string>
-    <string name="net_addr">http://gooong.cn:5040</string>
+    <string name="net_addr">https://gooong.cn:5040</string>
     <string name="get_all_route">/all</string>
     <string name="delete_route">/user/</string>
     <string name="refresh_route">/user/</string>
