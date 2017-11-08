@@ -511,7 +511,7 @@ public class MainActivity extends Activity {
         public void onClick(View v) {
         if (mCurrentLocation != null && mCurrentLocation.getErrorCode() == 0) {
             LatLng tmpLatLng = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(tmpLatLng, 10));
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(tmpLatLng));
         }
         }
     };
