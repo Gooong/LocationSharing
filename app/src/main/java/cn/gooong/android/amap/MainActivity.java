@@ -12,8 +12,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
@@ -114,7 +112,7 @@ public class MainActivity extends Activity {
         //设置定位蓝点
         MyLocationStyle myLocationStyle;
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);//连续定位、且将视角移动到地图中心点，定位蓝点跟随设备移动。（1秒1次定位）
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);
         myLocationStyle.showMyLocation(true);
         myLocationStyle.interval(getResources().getInteger(R.integer.locate_myself_interval_ms));
         mMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
@@ -258,6 +256,7 @@ public class MainActivity extends Activity {
                     tmpMarker = mAllMarkers.get(tmpId);
                     tmpJson = mAllLocations.get(tmpId);
                     tmpMarkerOptions = getMarkerOptions(tmpJson);
+
                     tmpMarker.setMarkerOptions(tmpMarkerOptions);
                 }
                 while (!mIdsNeedAdd.isEmpty()) {
@@ -311,6 +310,7 @@ public class MainActivity extends Activity {
                     .build();
             Response response = mOkHttpClient.newCall(request).execute();
             @SuppressWarnings("ConstantConditions") String jsonString = response.body().string();
+            Log.i("response",jsonString);
             JsonParser parser = new JsonParser();
             JsonObject json = (JsonObject) parser.parse(jsonString);
 
@@ -458,7 +458,7 @@ public class MainActivity extends Activity {
                 Log.i("myLocationChange", location.toString());
                 Inner_3dMap_location tmpLocation = (Inner_3dMap_location) location;
                 //在一定时间内若位置一样，则不更新
-                if(mCurrentLocation!=null && tmpLocation.toStr().equals(mCurrentLocation.toStr())){
+                if(isTheSamePosition(mCurrentLocation, tmpLocation)){
                     if(sSamePosTime*getResources().getInteger(R.integer.locate_myself_interval_ms) <= getResources().getInteger(R.integer.max_expire_time_ms)){
                         sSamePosTime+=1;
                         return;
@@ -474,6 +474,17 @@ public class MainActivity extends Activity {
             }
         }
     };
+
+    //比较两个位置是否相同
+    private Boolean isTheSamePosition(Inner_3dMap_location loc1, Inner_3dMap_location loc2){
+        return loc1 != null && loc2 != null &&
+                loc1.getLongitude() == loc2.getLongitude() &&
+                loc1.getLatitude() == loc2.getLatitude() &&
+                loc1.getAltitude() == loc2.getAltitude() &&
+                loc1.getAccuracy() == loc2.getAccuracy() &&
+                loc1.getAccuracy() == loc2.getAccuracy() &&
+                loc1.getBearing() == loc2.getBearing();
+    }
 
     private void onLocateError(Inner_3dMap_location location) {
         Log.i("locate_error", location.toStr());
