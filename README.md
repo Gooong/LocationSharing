@@ -1,3 +1,3 @@
 # ShareLocation
-share your real-time location with all users
+Share your real-time location with users all over the world
 
