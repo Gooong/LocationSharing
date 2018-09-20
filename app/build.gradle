@@ -25,24 +25,24 @@ android {
             //keystore中key的别名
             keyAlias 'key0'
             //keystore中key的密码
-            keyPassword '12345678'
+            keyPassword '123456'
             //keystore的文件路径，可以是绝对路径也可以是相对路径
-            storeFile file('/home/gong/.android/12345678.jks')
+            storeFile file('/home/gongxr/Android/keystore/keystore_2018.jks')
             //keystore的密码
-            storePassword '12345678'
+            storePassword '123456'
         }
         release {
             //keystore中key的别名
             keyAlias 'key0'
             //keystore中key的密码
-            keyPassword '12345678'
+            keyPassword '123456'
             //keystore的文件路径，可以是绝对路径也可以是相对路径
-            storeFile file('/home/gong/.android/12345678.jks')
+            storeFile file('/home/gongxr/Android/keystore/keystore_2018.jks')
             //keystore的密码
-            storePassword '12345678'
+            storePassword '123456'
         }
     }
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {

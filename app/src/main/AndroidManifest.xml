@@ -35,7 +35,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         android:fullBackupContent="@xml/backup_descriptor">
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="fdb10ec5ec40ae32515884e80e9e44a5">
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="5cb43d7c930d9fd3c151fd8383a10cd4">
         </meta-data>
         <activity android:name=".MainActivity"
             android:theme="@style/AMapTheme"
